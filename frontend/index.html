@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhishGuard | URL Detector</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="shortcut icon" href="/static/PhishGuard.png" type="image/x-icon">
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>PhishGuard</h1>
+      <p class="subtitle">ML-powered phishing URL detection for single links and bulk lists</p>
+
+      <section class="panel">
+        <h2>Single URL Scan</h2>
+        <form id="predict-form" class="form">
+          <label for="url-input">URL to analyze</label>
+          <input
+            id="url-input"
+            name="url"
+            type="url"
+            placeholder="https://example.com/login"
+            required
+          />
+          <p id="url-error" class="field-error hidden"></p>
+          <button id="submit-btn" type="submit">Analyze URL</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Bulk URL Scan</h2>
+        <p class="hint">Paste one URL per line (up to 200 URLs).</p>
+        <form id="batch-form" class="form">
+          <textarea id="batch-input" rows="7" placeholder="https://example.com&#10;http://suspicious-site.xyz/login"></textarea>
+          <p id="batch-error" class="field-error hidden"></p>
+          <div class="button-row">
+            <button id="batch-submit-btn" type="submit">Run Bulk Scan</button>
+            <button id="download-btn" type="button" class="secondary" disabled>Download CSV</button>
+          </div>
+        </form>
+      </section>
+
+      <div id="status" class="status" aria-live="polite"></div>
+
+      <article id="result-card" class="result hidden">
+        <h2>Result</h2>
+        <p><strong>URL:</strong> <span id="result-url"></span></p>
+        <p><strong>Prediction:</strong> <span id="result-prediction"></span></p>
+        <p><strong>Risk Level:</strong> <span id="result-risk-badge" class="risk-badge">-</span></p>
+        <p><strong>Confidence:</strong> <span id="result-confidence"></span></p>
+        <div class="confidence-wrap">
+          <div class="confidence-track">
+            <div id="confidence-fill" class="confidence-fill"></div>
+          </div>
+        </div>
+        <p><strong>Label:</strong> <span id="result-label"></span></p>
+        <p><strong>Recommended Action:</strong> <span id="result-action"></span></p>
+        <div>
+          <strong>Risk Flags:</strong>
+          <ul id="risk-flags"></ul>
+        </div>
+      </article>
+
+      <section id="batch-summary" class="summary hidden">
+        <h2>Bulk Scan Summary</h2>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <p>Total</p>
+            <strong id="sum-total">0</strong>
+          </div>
+          <div class="summary-card">
+            <p>Phishing</p>
+            <strong id="sum-phishing">0</strong>
+          </div>
+          <div class="summary-card">
+            <p>Safe</p>
+            <strong id="sum-safe">0</strong>
+          </div>
+          <div class="summary-card">
+            <p>High Risk</p>
+            <strong id="sum-high-risk">0</strong>
+          </div>
+        </div>
+        <h3>Top Risky URLs</h3>
+        <div class="table-wrap">
+          <table class="risk-table">
+            <thead>
+              <tr>
+                <th>URL</th>
+                <th>Prediction</th>
+                <th>Confidence</th>
+                <th>Risk Level</th>
+              </tr>
+            </thead>
+            <tbody id="top-risky-body">
+              <tr>
+                <td colspan="4">Run a bulk scan to see high-risk rows.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="history">
+        <h2>Recent Predictions</h2>
+        <ul id="history-list" class="history-list"></ul>
+      </section>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

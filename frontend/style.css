@@ -1,0 +1,296 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #17202a;
+  background: linear-gradient(180deg, #f4f8fb 0%, #e8f0f8 100%);
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.card {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(10, 30, 60, 0.12);
+  padding: 28px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+h3 {
+  margin: 16px 0 8px;
+}
+
+h1 {
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  margin: 0 0 22px;
+  color: #5d6d7e;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.panel {
+  border: 1px solid #e3ebf3;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+  background: #fcfeff;
+}
+
+.hint {
+  margin: 0 0 8px;
+  color: #5d6d7e;
+  font-size: 13px;
+}
+
+.field-error {
+  margin: 0;
+  color: #b42318;
+  font-size: 13px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  background: #0f6efd;
+  color: #fff;
+  padding: 11px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #5b6b7d;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.status {
+  margin-top: 16px;
+  min-height: 22px;
+  color: #2f4858;
+}
+
+.result {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 10px;
+  background: #f7fafc;
+  border: 1px solid #d9e4ef;
+}
+
+.result.safe {
+  border-color: #6bbf84;
+  background: #eefaf2;
+}
+
+.result.phishing {
+  border-color: #df6f6f;
+  background: #fff0f0;
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  background: #e9edf2;
+  color: #34495e;
+}
+
+.risk-badge.low {
+  background: #e9f7ef;
+  color: #1d7a46;
+}
+
+.risk-badge.medium {
+  background: #fff6db;
+  color: #8a6500;
+}
+
+.risk-badge.high {
+  background: #fde9e9;
+  color: #a12525;
+}
+
+.confidence-wrap {
+  margin: 10px 0 8px;
+}
+
+.confidence-track {
+  width: 100%;
+  height: 12px;
+  border-radius: 99px;
+  background: #dfe8f2;
+  overflow: hidden;
+}
+
+.confidence-fill {
+  height: 100%;
+  width: 0;
+  background: #0f6efd;
+  transition: width 200ms ease;
+}
+
+.result.safe .confidence-fill {
+  background: #29a35a;
+}
+
+.result.phishing .confidence-fill {
+  background: #d64545;
+}
+
+.history {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #e3ebf3;
+}
+
+.summary {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid #d9e4ef;
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summary-card {
+  border: 1px solid #dbe7f2;
+  border-radius: 8px;
+  background: #fff;
+  padding: 10px;
+}
+
+.summary-card p {
+  margin: 0;
+  color: #5d6d7e;
+  font-size: 13px;
+}
+
+.summary-card strong {
+  font-size: 20px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.risk-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #dbe7f2;
+  border-radius: 8px;
+}
+
+.risk-table th,
+.risk-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eef3f8;
+}
+
+.risk-table th {
+  background: #f4f8fc;
+  color: #35516b;
+}
+
+.risk-url {
+  max-width: 310px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  padding: 8px 10px;
+  border: 1px solid #d9e4ef;
+  border-radius: 8px;
+  background: #fbfdff;
+}
+
+.history-item .tag {
+  font-weight: 700;
+}
+
+.history-item .tag.safe {
+  color: #187b43;
+}
+
+.history-item .tag.phishing {
+  color: #ba2d2d;
+}
+
+.hidden {
+  display: none;
+}
